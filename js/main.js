@@ -152,6 +152,14 @@ function onDeviceMotionEvent() {
 
 			if($('.pano-controls').hasClass('fade-in')) {
 				$('.pano-controls').removeClass('fade-in').addClass('fade-out');
+
+				setTimeout(function(){
+					$('.overhead-popup').addClass('fade-in');
+
+					setTimeout(function(){
+						$('.overhead-popup').addClass('fade-out');
+					}, 4000);
+				}, 4000);
         	}
 
         	if($('.start-over').hasClass('fade-in')) {
