@@ -39,13 +39,13 @@
 
         .start-button {
             position: absolute;
-            top: 6px;
+            top: 10px;
             right: 60px;
             z-index:100;
         }
 
         .left {
-            background:#555;
+            background:#292929;
             position: absolute;
             width: 50%;
             left:0;
@@ -110,7 +110,7 @@
         h2 {
             color:white;
             margin:0;
-            font-size:24px;
+            font-size:21px;
             font-weight:300;
             margin-bottom:20px;
             line-height:30px;
@@ -142,7 +142,7 @@
 
         p {
             color:white;
-            font-size:18px;
+            font-size:16.5px;
             font-weight:200;
             margin-bottom:20px;
             line-height:25px;
@@ -195,10 +195,11 @@
 
             p {
                 color:white;
-                margin:15px 0;
+                margin:15px 0 0;
                 font-family: AvenirProLight;
                 font-size:14px;
                 line-height:22px;
+                padding:10px 0 0 0;
             }
         }
         .close-icon {
@@ -216,7 +217,7 @@
         position: absolute;
         bottom: 8px;
         right: 20px;
-        font-size: 15pt;
+        font-size: 13pt;
 
         p {
             color: white;

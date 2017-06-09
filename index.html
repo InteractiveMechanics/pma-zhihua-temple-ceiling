@@ -57,31 +57,39 @@
     font-size: 40px;
 }
 
+.slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus {
+    font-size: 40px;
+}
+
 .slick-next {
     right:-2%;
 }
+
+.slick-dots {
+    bottom: -30px;
+}
+
 .slick-dots li.slick-active button:before {
     background: url('./assets/icon-slideshow-active.svg');
     color: transparent;
 }
 
 .slick-dots li {
-    width: 15px;
-    height: 15px;
+    width: 12px;
+    height: 12px;
 }
 
 .slick-dots li button:before {
     background: url('./assets/icon-slideshow-inactive.svg');
     color: transparent;
-    width: 15px;
-    height: 15px;
+    width: 12px;
+    height: 12px;
 }
 
 .slick-prev, .slick-next {
     top:46%;
     z-index: 5;
 }
-
 
 .wrapper {
     width: 1024px;
@@ -188,7 +196,7 @@
                     <p>Touch anywhere to explore</p>
 
                     <div class="start-button">
-                        <img src="./assets/icon-start.svg" width="48">
+                        <img src="./assets/icon-start.svg" width="40">
                     </div>
 
                 </div>
@@ -231,10 +239,10 @@
 
             <div class="home-info-modal">
                 <div class="top-info">
-                    <h2>What can you find in the temple ceiling?</h2>
+                    <h2>This carved ceiling comes from the Hall of Great Wisdom in Beijing.</h2>
 
                     <p>
-                        This carved ceiling comes from the Hall of Great Wisdom in Beijing. Rich in symbolism, it is both a Buddhist vision of heaven and a bold statement of the emperor’s power.
+                         Rich in symbolism, it is both a Buddhist vision of heaven and a bold statement of the emperor’s power.
                         <br />
                         Explore the ceiling’s details to uncover its meaning.
                     </p>
@@ -375,6 +383,7 @@
     <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <script type="text/javascript">
+        
         function getKrpanoObject() {
             var krpano = document.getElementById("krpanoSWFObject");
             return krpano;
@@ -425,7 +434,14 @@
                 $('.close-icon').click();
             } 
 
+            var name = 'a' + id;
+            var krpano = document.getElementById("krpanoSWFObject");
+            krpano.call("looktohotspot('"+ name +"', 0, smooth(60, -60, .5));");
+
             var hotspot = GetHotSpot(id);
+
+            console.log(hotspot);
+
             var title = hotspot.title;
             var body = hotspot.body;
             var desc = hotspot.body;
@@ -446,14 +462,9 @@
                 });
             }
 
-            /*
-
-            var krpano = getKrpanoObject();
             var query = "hotspot['"+name+"']"; // i.e. "hotspot['spot0']"
             var hotspot = krpano.get(query); 
             hotspot.alpha = 0;
-
-            */
 
             $('.close-icon').data('lasthotspot', 'a' + id);
         }
