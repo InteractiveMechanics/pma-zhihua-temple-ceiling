@@ -391,12 +391,12 @@
 
         function krpanoZoomTo(val) {
             var krpano = getKrpanoObject();
-        krpano.call("zoomto(" + val + ", smooth(60, -60, 360));");
+        krpano.call("zoomto(" + val + ", tween('easeInOutQuad', 0.5));");
         }
 
         function krpanoMoveTo(x, y) {
             var krpano = getKrpanoObject();
-            krpano.call("moveto(" + x + ", "+ y + ", smooth(60, -60, 360));");
+            krpano.call("moveto(" + x + ", "+ y + ", tween('easeInOutQuad', 0.5));");
         }
 
         function disablePano() {
@@ -436,7 +436,7 @@
 
             var name = 'a' + id;
             var krpano = document.getElementById("krpanoSWFObject");
-            krpano.call("looktohotspot('"+ name +"', 0, smooth(60, -60, .5));");
+            krpano.call("looktohotspot('"+ name +"', 0, tween('easeInOutQuad', 0.5));");
 
             var hotspot = GetHotSpot(id);
 

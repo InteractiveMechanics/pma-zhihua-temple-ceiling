@@ -20,7 +20,7 @@
 		<!-- switch(plugin[gyro].enabled -->
     </action>
     
-	<image type="CUBE" multires="true" tilesize="512">
+	<image type="CUBE" multires="true" tilesize="512" prealign="0|180|0">
 		<level tiledimagewidth="5730" tiledimageheight="5730">
 			<cube url="20141124pano444434_CC__85mm_r8_Pagodas_18_000x.tiles/mres_%s/l4/%v/l4_%s_%v_%h.jpg" />
 		</level>

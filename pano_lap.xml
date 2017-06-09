@@ -6,12 +6,12 @@
 	
 	<!-- view settings -->
 	<view hlookat="0" vlookat="0" maxpixelzoom=".43" fovmax=".43" limitview="auto" />
-	
+	<contextmenu fullscreen="false" versioninfo="false" touch="false" />
 
 	<preview url="pano_lap.tiles/preview.jpg" />
 
 	<!-- pano image -->
-	<image type="CYLINDER" hfov="1.00" vfov="1.000000" voffset="0.00" multires="true" tilesize="512" progressive="true">
+	<image type="CYLINDER" hfov="1.00" vfov="1.000000" voffset="0.00" multires="true" tilesize="512" progressive="true" prealign="0|0|0">
 		<level tiledimagewidth="18000" tiledimageheight="18000" download="view">
 			<cylinder url="pano_lap.tiles/l7/%v/l7_%v_%h.jpg" />
 		</level>
@@ -74,10 +74,9 @@
         enabled="true"
         ath=".106"
         atv="-.109"
-        scale=".0015"
+        scale="0.5"
         alpha="1"
         edge="center"
-        zoom="true"
         capture="false"
         onclick="js(OpenHotSpot(7));" />
 
@@ -89,10 +88,9 @@
         enabled="true"
         ath="-.052"
         atv="-.115"
-        scale=".0015"
+        scale="0.5"
         alpha="1"
         edge="center"
-        zoom="true"
         capture="false"
         onclick="js(OpenHotSpot(6));" />
 
@@ -104,10 +102,9 @@
         enabled="true"
         ath=".106"
         atv=".001"
-        scale=".0015"
+        scale="0.5"
         alpha="1"
         edge="center"
-        zoom="true"
         capture="false"
         onclick="js(OpenHotSpot(5));" />
 
@@ -118,11 +115,10 @@
         visible="true"
         enabled="true"
         ath="-.160"
-        atv="-.127"
-        scale=".0015"
+        atv="-.1"
+        scale="0.5"
         alpha="1"
         edge="center"
-        zoom="true"
         capture="false"
         onclick="js(OpenHotSpot(4));" />
 
@@ -134,10 +130,9 @@
         enabled="true"
         ath="-.193"
         atv=".058"
-        scale=".0015"
+        scale="0.5"
         alpha="1"
         edge="center"
-        zoom="true"
         capture="false"
         onclick="js(OpenHotSpot(3));" />
 
@@ -149,10 +144,9 @@
         enabled="true"
         ath=".059"
         atv="0"
-        scale=".0015"
+        scale="0.5"
         alpha="1"
         edge="center"
-        zoom="true"
         capture="false"
         onclick="js(OpenHotSpot(2));" />
 
@@ -165,10 +159,9 @@
         enabled="true"
         ath="-.003"
         atv=".003"
-        scale=".0015"
+        scale="0.5"
         alpha="1"
         edge="center"
-        zoom="true"
         capture="false"
         onclick="js(OpenHotSpot(1));" />
 
