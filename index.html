@@ -24,6 +24,14 @@
 
 
 <style type="text/css">
+body {
+    margin:0;
+    padding:0;
+}
+
+.video-controls {
+    top: 691px !important;
+}
 
 @font-face {
   font-family: AvenirProLight;
@@ -133,6 +141,11 @@
 #modal-background.active, #modal-content.active {
     display: block;
 }
+
+
+.overhead-popup {
+    bottom: -20px !important;
+}
 </style>
 
 <script type="text/javascript">
@@ -142,6 +155,8 @@
 </head>
 <body>
     <div class="wrapper">
+
+        
 
         <div id="modal-background"></div>
         <div id="modal-content">
@@ -154,11 +169,7 @@
             </div>
         </div>
 
-        <!--<div class="overhead-popup" style="opacity:0;">
-            <p>
-                To explore the ceiling, hold the device above your head.
-            </p>
-        </div>-->
+        
 
         <div class="pano-controls" style="opacity:0; display:none;">
             <div class="refocus-icon icon">
@@ -370,6 +381,11 @@
                 </script>
             </div>
 
+            <div class="overhead-popup" style="opacity:0;">
+                <p>
+                    To explore the ceiling, hold the device above your head.
+                </p>
+            </div>
             
         </div>
 
@@ -434,9 +450,6 @@
                 $('.close-icon').click();
             } 
 
-            var name = 'a' + id;
-            var krpano = document.getElementById("krpanoSWFObject");
-            krpano.call("looktohotspot('"+ name +"', 0, tween('easeInOutQuad', 0.5));");
 
             var hotspot = GetHotSpot(id);
 
@@ -461,6 +474,11 @@
                     arrows: true
                 });
             }
+
+            var name = 'a' + id;
+            var krpano = document.getElementById("krpanoSWFObject");
+            krpano.call("looktohotspot('"+ name +"', 0, tween('easeInOutQuad', 0.5));");
+
 
             var query = "hotspot['"+name+"']"; // i.e. "hotspot['spot0']"
             var hotspot = krpano.get(query); 
@@ -565,10 +583,6 @@
 
         });
 
-
-        function fade() {
-            $('.overhead-popup').fadeIn().delay(10000).fadeOut().delay(10000).fadeOut(fade);
-        }
     </script>
 
     <script type="text/javascript">
