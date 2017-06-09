@@ -69,7 +69,7 @@
     <hotspot 
         name="a7"
         type="image"
-        url="/prototype/assets/icon-hotspot.svg"
+        url="./assets/icon-hotspot.svg"
         visible="true"
         enabled="true"
         ath=".106"
@@ -84,7 +84,7 @@
     <hotspot 
         name="a6"
         type="image"
-        url="/prototype/assets/icon-hotspot.svg"
+        url="./assets/icon-hotspot.svg"
         visible="true"
         enabled="true"
         ath="-.052"
@@ -99,7 +99,7 @@
     <hotspot 
         name="a5"
         type="image"
-        url="/prototype/assets/icon-hotspot.svg"
+        url="./assets/icon-hotspot.svg"
         visible="true"
         enabled="true"
         ath=".106"
@@ -114,7 +114,7 @@
     <hotspot 
         name="a4"
         type="image"
-        url="/prototype/assets/icon-hotspot.svg"
+        url="./assets/icon-hotspot.svg"
         visible="true"
         enabled="true"
         ath="-.160"
@@ -129,7 +129,7 @@
     <hotspot 
         name="a3"
         type="image"
-        url="/prototype/assets/icon-hotspot.svg"
+        url="./assets/icon-hotspot.svg"
         visible="true"
         enabled="true"
         ath="-.193"
@@ -144,7 +144,7 @@
     <hotspot 
         name="a2"
         type="image"
-        url="/prototype/assets/icon-hotspot.svg"
+        url="./assets/icon-hotspot.svg"
         visible="true"
         enabled="true"
         ath=".059"
@@ -160,7 +160,7 @@
     <hotspot 
         name="a1"
         type="image"
-        url="/prototype/assets/icon-hotspot.svg"
+        url="./assets/icon-hotspot.svg"
         visible="true"
         enabled="true"
         ath="-.003"
