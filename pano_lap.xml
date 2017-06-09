@@ -1,0 +1,175 @@
+<krpano version="1.18" bgcolor="0x000000">
+
+	<!-- the skin and the flat pano viewing and controlling setup -->
+	<!--<include url="skin/defaultskin.xml" />
+	<include url="skin/flatpano_setup.xml" />-->
+	
+	<!-- view settings -->
+	<view hlookat="0" vlookat="0" maxpixelzoom=".43" fovmax=".43" limitview="auto" />
+	
+
+	<preview url="pano_lap.tiles/preview.jpg" />
+
+	<!-- pano image -->
+	<image type="CYLINDER" hfov="1.00" vfov="1.000000" voffset="0.00" multires="true" tilesize="512" progressive="true">
+		<level tiledimagewidth="18000" tiledimageheight="18000" download="view">
+			<cylinder url="pano_lap.tiles/l7/%v/l7_%v_%h.jpg" />
+		</level>
+		<level tiledimagewidth="9000" tiledimageheight="9000" download="view">
+			<cylinder url="pano_lap.tiles/l6/%v/l6_%v_%h.jpg" />
+		</level>
+		<level tiledimagewidth="4500" tiledimageheight="4500" download="view">
+			<cylinder url="pano_lap.tiles/l5/%v/l5_%v_%h.jpg" />
+		</level>
+		<level tiledimagewidth="2250" tiledimageheight="2250" download="view">
+			<cylinder url="pano_lap.tiles/l4/%v/l4_%v_%h.jpg" />
+		</level>
+		<level tiledimagewidth="1126" tiledimageheight="1126" download="view">
+			<cylinder url="pano_lap.tiles/l3/%v/l3_%v_%h.jpg" />
+		</level>
+		<level tiledimagewidth="512" tiledimageheight="512" download="view">
+			<cylinder url="pano_lap.tiles/l2/%v/l2_%v_%h.jpg" />
+		</level>
+		<level tiledimagewidth="256" tiledimageheight="256" download="view">
+			<cylinder url="pano_lap.tiles/l1/%v/l1_%v_%h.jpg" />
+		</level>
+	</image>
+
+	<!--<hotspot 
+        name="lotus"
+        type="image"
+        url="/prototype/assets/icon-hotspot.svg"
+        visible="true"
+        enabled="true"
+        ath="-.089"
+        atv="-0.085"
+        scale=".0015"
+        alpha="1"
+        edge="center"
+        zoom="true"
+        capture="false"
+        onclick="js(LotusHotSpot('lotus'));" />
+
+    <hotspot 
+        name="heavenly"
+        type="image"
+        url="/prototype/assets/icon-hotspot.svg"
+        visible="true"
+        enabled="true"
+        ath="-.095"
+        atv=".05"
+        scale=".0015"
+        alpha="1"
+        edge="center"
+        zoom="true"
+        capture="false"
+        onclick="js(HeavenlyHotSpot('heavenly'));" />-->
+
+
+    <hotspot 
+        name="a7"
+        type="image"
+        url="/prototype/assets/icon-hotspot.svg"
+        visible="true"
+        enabled="true"
+        ath=".106"
+        atv="-.109"
+        scale=".0015"
+        alpha="1"
+        edge="center"
+        zoom="true"
+        capture="false"
+        onclick="js(OpenHotSpot(7));" />
+
+    <hotspot 
+        name="a6"
+        type="image"
+        url="/prototype/assets/icon-hotspot.svg"
+        visible="true"
+        enabled="true"
+        ath="-.052"
+        atv="-.115"
+        scale=".0015"
+        alpha="1"
+        edge="center"
+        zoom="true"
+        capture="false"
+        onclick="js(OpenHotSpot(6));" />
+
+    <hotspot 
+        name="a5"
+        type="image"
+        url="/prototype/assets/icon-hotspot.svg"
+        visible="true"
+        enabled="true"
+        ath=".106"
+        atv=".001"
+        scale=".0015"
+        alpha="1"
+        edge="center"
+        zoom="true"
+        capture="false"
+        onclick="js(OpenHotSpot(5));" />
+
+    <hotspot 
+        name="a4"
+        type="image"
+        url="/prototype/assets/icon-hotspot.svg"
+        visible="true"
+        enabled="true"
+        ath="-.160"
+        atv="-.127"
+        scale=".0015"
+        alpha="1"
+        edge="center"
+        zoom="true"
+        capture="false"
+        onclick="js(OpenHotSpot(4));" />
+
+    <hotspot 
+        name="a3"
+        type="image"
+        url="/prototype/assets/icon-hotspot.svg"
+        visible="true"
+        enabled="true"
+        ath="-.193"
+        atv=".058"
+        scale=".0015"
+        alpha="1"
+        edge="center"
+        zoom="true"
+        capture="false"
+        onclick="js(OpenHotSpot(3));" />
+
+    <hotspot 
+        name="a2"
+        type="image"
+        url="/prototype/assets/icon-hotspot.svg"
+        visible="true"
+        enabled="true"
+        ath=".059"
+        atv="0"
+        scale=".0015"
+        alpha="1"
+        edge="center"
+        zoom="true"
+        capture="false"
+        onclick="js(OpenHotSpot(2));" />
+
+
+    <hotspot 
+        name="a1"
+        type="image"
+        url="/prototype/assets/icon-hotspot.svg"
+        visible="true"
+        enabled="true"
+        ath="-.003"
+        atv=".003"
+        scale=".0015"
+        alpha="1"
+        edge="center"
+        zoom="true"
+        capture="false"
+        onclick="js(OpenHotSpot(1));" />
+
+</krpano>

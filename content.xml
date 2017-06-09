@@ -1,0 +1,195 @@
+<krpano>
+
+	<!-- grid preview pano -->
+	<!-- <preview type="grid(cube,64,64,512,0xCCCCCC,0xF6F6F6,0x999999);" /> -->
+	
+	<plugin name="gyro" devices="html5" url="plugins/gyro.js" enabled="false" camroll="true" friction="0.4" velastic="0.8"
+    
+	        onloaded="delayedcall(1,ifnot(available, showgyrowarning() ));"
+	        />
+			
+	<events onxmlcomplete="startup();"
+    />
+
+	
+	<action name="startup">
+        <!-- SET HEADING -->
+        lookat(90, -50, 60);
+        
+		<!-- switch(plugin[gyro].enabled -->
+    </action>
+    
+    <image type="CUBE" multires="true" tilesize="512">
+        <level tiledimagewidth="5730" tiledimageheight="5730">
+            <cube url="20141124pano444434_CC__85mm_r8_Pagodas_18_000x.tiles/mres_%s/l4/%v/l4_%s_%v_%h.jpg" />
+        </level>
+        <level tiledimagewidth="2866" tiledimageheight="2866">
+            <cube url="20141124pano444434_CC__85mm_r8_Pagodas_18_000x.tiles/mres_%s/l3/%v/l3_%s_%v_%h.jpg" />
+        </level>
+        <level tiledimagewidth="1434" tiledimageheight="1434">
+            <cube url="20141124pano444434_CC__85mm_r8_Pagodas_18_000x.tiles/mres_%s/l2/%v/l2_%s_%v_%h.jpg" />
+        </level>
+        <level tiledimagewidth="718" tiledimageheight="718">
+            <cube url="20141124pano444434_CC__85mm_r8_Pagodas_18_000x.tiles/mres_%s/l1/%v/l1_%s_%v_%h.jpg" />
+        </level>
+        <mobile>
+            <cube url="20141124pano444434_CC__85mm_r8_Pagodas_18_000x.tiles/mobile_%s.jpg" />
+        </mobile>
+    </image>
+    
+   
+
+	<!-- view/fov settings -->
+	<view hlookat="45" vlookat="0" maxpixelzoom="1.0" fovmax="120" limitview="auto" />
+
+
+<action name="about">
+    //js(alert(get(name)));
+    js( updateContent(get(name)) );
+</action>
+
+<hotspot name="lotus_1" onclick="about()" fillcolor="0xaaaaaa" alpha="0" capture="false" fillalpha="0.5" borderwidth="0.0" bordercolor="0xaaaaaa" borderalpha="1.0"
+    >
+    <point ath="25.659756" atv="-39.314131" />
+    <point ath="42.064174" atv="-33.90269" />
+    <point ath="58.866853" atv="-40.576434" />
+</hotspot>
+
+<hotspot name="lotus_2" onclick="about()" id="test2" fillcolor="0xaaaaaa" group="lotus" alpha="0" capture="false" fillalpha="0.5" borderwidth="0.0" bordercolor="0xaaaaaa" borderalpha="1.0"
+    >
+    <point ath="-15.717078" atv="-39.445683" />
+    <point ath="0.133029" atv="-33.606063" />
+    <point ath="17.269418" atv="-39.324996" />
+</hotspot>
+
+<hotspot name="lotus_3" onclick="about()" fillcolor="0xaaaaaa" alpha="0" capture="false" fillalpha="0.5" borderwidth="0.0" bordercolor="0xaaaaaa" borderalpha="1.0"
+    >
+    <point ath="-292.20961" atv="-41.047729" />
+    <point ath="-274.914293" atv="-35.494175" />
+    <point ath="-257.974574" atv="-42.78375" />
+</hotspot>
+
+<hotspot name="lotus_4" onclick="about()" fillcolor="0xaaaaaa" alpha="0" capture="false" fillalpha="0.5" borderwidth="0.0" bordercolor="0xaaaaaa" borderalpha="1.0"
+    >
+    <point ath="111.127863" atv="-43.108442" />
+    <point ath="149.213953" atv="-44.72344" />
+    <point ath="130.553551" atv="-37.839938" />
+</hotspot>
+
+
+
+
+<hotspot name="lotus_5" onclick="about()" fillcolor="0xaaaaaa" alpha="0" capture="false" fillalpha="0.5" borderwidth="0.0" bordercolor="0xaaaaaa" borderalpha="1.0"
+    >
+    <point ath="-86.870412" atv="-36.112266" />
+    <point ath="-104.564298" atv="-43.380555" />
+    <point ath="-67.444757" atv="-41.543949" />
+</hotspot>
+
+<hotspot name="lotus_6" onclick="about()" fillcolor="0xaaaaaa" alpha="0" capture="false" fillalpha="0.5" borderwidth="0.0" bordercolor="0xaaaaaa" borderalpha="1.0"
+    >
+    <point ath="-42.464366" atv="-33.972494" />
+    <point ath="-24.876811" atv="-39.74448" />
+    <point ath="-59.179844" atv="-41.088651" />
+</hotspot>
+
+<hotspot name="lotus_7" onclick="about()" fillcolor="0xaaaaaa" alpha="0" capture="false" fillalpha="0.5" borderwidth="0.0" bordercolor="0xaaaaaa" borderalpha="1.0"
+    >
+    <point ath="-133.451353" atv="-37.543602" />
+    <point ath="-152.522879" atv="-45.039767" />
+    <point ath="-113.114552" atv="-43.799826" />
+</hotspot>
+
+<hotspot name="lotus_8" onclick="about()" fillcolor="0xaaaaaa" alpha="0" capture="false" fillalpha="0.5" borderwidth="0.0" bordercolor="0xaaaaaa" borderalpha="1.0"
+    >
+    <point ath="178.474452" atv="-38.659044" />
+    <point ath="159.133151" atv="-44.957084" />
+    <point ath="-161.483156" atv="-45.074751" />
+</hotspot>
+
+<hotspot name="heavenly_1" onclick="about()" group="heavenly" fillcolor="0xaaaaaa" alpha="0" capture="false" fillalpha="0.5" borderwidth="0" bordercolor="0xaaaaaa" borderalpha="1.0"
+    >
+    <point ath="-83.027573" atv="-35.61373" />
+    <point ath="-64.205243" atv="-40.806064" />
+    <point ath="-44.862885" atv="-33.532221" />
+    <point ath="-64.900609" atv="-32.879805" />
+</hotspot>
+
+
+<hotspot name="heavenly_2" onclick="about()" fillcolor="0xaaaaaa" alpha="0" capture="false" fillalpha="0.5" borderwidth="0" bordercolor="0xaaaaaa" borderalpha="1.0"
+    >
+    <point ath="-39.015493" atv="-33.898202" />
+    <point ath="-21.002226" atv="-38.965249" />
+    <point ath="-3.018386" atv="-33.139856" />
+    <point ath="-21.118829" atv="-31.593545" />
+</hotspot>
+
+<hotspot name="heavenly_3" onclick="about()" fillcolor="0xaaaaaa" alpha="0" capture="false" fillalpha="0.5" borderwidth="0" bordercolor="0xaaaaaa" borderalpha="1.0"
+    >
+    <point ath="-91.10775" atv="-36.025893" />
+    <point ath="-110.186865" atv="-34.834627" />
+    <point ath="-130.029581" atv="-37.3608" />
+    <point ath="-108.994166" atv="-42.776042" />
+</hotspot>
+
+<hotspot name="heavenly_4" onclick="about()" fillcolor="0xaaaaaa" alpha="0" capture="false" fillalpha="0.5" borderwidth="0" bordercolor="0xaaaaaa" borderalpha="1.0"
+    >
+    <point ath="-157.110021" atv="-43.986829" />
+    <point ath="-137.55114" atv="-37.774872" />
+    <point ath="-157.935838" atv="-36.07454" />
+    <point ath="-178.834685" atv="-38.047108" />
+</hotspot>
+
+<hotspot name="heavenly_5" onclick="about()" fillcolor="0xaaaaaa" alpha="0" capture="false" fillalpha="0.5" borderwidth="0" bordercolor="0xaaaaaa" borderalpha="1.0"
+    >
+    <point ath="134.756755" atv="-37.371748" />
+    <point ath="154.07795" atv="-44.002096" />
+    <point ath="173.992118" atv="-38.501949" />
+    <point ath="154.344365" atv="-35.872261" />
+</hotspot>
+
+<hotspot name="heavenly_6" onclick="about()" fillcolor="0xaaaaaa" alpha="0" capture="false" fillalpha="0.5" borderwidth="0" bordercolor="0xaaaaaa" borderalpha="1.0"
+    >
+    <point ath="126.642805" atv="-37.275371" />
+    <point ath="106.731394" atv="-42.227619" />
+    <point ath="87.946664" atv="-35.2091" />
+    <point ath="107.955942" atv="-34.45301" />
+</hotspot>
+
+<hotspot name="heavenly_7" onclick="about()" fillcolor="0xaaaaaa" alpha="0" capture="false" fillalpha="0.5" borderwidth="0" bordercolor="0xaaaaaa" borderalpha="1.0"
+    >
+    <point ath="63.381681" atv="-39.993015" />
+    <point ath="45.93596" atv="-33.801317" />
+    <point ath="63.85941" atv="-32.508609" />
+    <point ath="82.329604" atv="-34.882389" />
+</hotspot>
+
+<hotspot name="heavenly_8" onclick="about()" fillcolor="0xaaaaaa" alpha="0" capture="false" fillalpha="0.5" borderwidth="0" bordercolor="0xaaaaaa" borderalpha="1.0"
+    >
+    <point ath="21.59356" atv="-31.230517" />
+    <point ath="39.305138" atv="-33.284691" />
+    <point ath="21.269988" atv="-38.607483" />
+    <point ath="2.684427" atv="-32.867321" />
+</hotspot>
+
+<hotspot name="dragon_1" onclick="about()" fillcolor="0xaaaaaa" capture="false" fillalpha="0.5" alpha="0" borderwidth="3.0" bordercolor="0xaaaaaa" borderalpha="1.0"
+    >
+    <point ath="149.469419" atv="-74.26774" />
+    <point ath="123.056472" atv="-73.150924" />
+    <point ath="100.353612" atv="-71.907197" />
+    <point ath="79.100035" atv="-70.794001" />
+    <point ath="59.19302" atv="-69.771313" />
+    <point ath="35.833456" atv="-69.191396" />
+    <point ath="19.830891" atv="-68.335629" />
+    <point ath="1.198888" atv="-68.69068" />
+    <point ath="-17.992628" atv="-68.995675" />
+    <point ath="-37.285497" atv="-69.799405" />
+    <point ath="-58.915212" atv="-71.009418" />
+    <point ath="-82.404948" atv="-72.271339" />
+    <point ath="-103.82599" atv="-73.21842" />
+    <point ath="-128.767399" atv="-74.301618" />
+    <point ath="-156.29933" atv="-74.844554" />
+    <point ath="175.398969" atv="-74.840946" />
+</hotspot>
+
+</krpano>

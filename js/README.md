@@ -1,0 +1,2 @@
+# /JS
+Our JavaScript files can go in here. If you're using something from another vendor, try adding it to the bower file first for consistency. Otherwise, you can drop it in here and commit it with the project.
