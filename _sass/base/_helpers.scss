@@ -1,5 +1,5 @@
-.video-container {
-  height:768px;
+.video-controls {
+    top: 691px !important;
 }
 
 .pano-controls {
@@ -96,12 +96,6 @@
         top:0;
         width: 1024px;
         height: 768px;
-        -webkit-animation-name: fade;
-        -webkit-animation-iteration-count: infinite;
-        -webkit-animation-duration: 6s;
-        animation-name: fade;
-        animation-iteration-count: infinite;
-        animation-duration: 6s;
     }
 }
 
@@ -174,4 +168,109 @@
     -moz-animation: fadeOut 1s 1 forwards;
     -o-animation: fadeOut 1s 1 forwards;
     animation: fadeOut 1s 1 forwards; 
+}
+
+
+/** Slick Slider Adjustments **/
+
+.slick-prev { 
+
+  font-size: 0px;
+    line-height: 0;
+    position: absolute;
+    top: 50%;
+    display: block;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    cursor: pointer;
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent;
+    z-index: 100;
+
+  &:before {
+    font-family: 'slick';
+    font-size: 40px;
+    line-height: 1;
+    opacity: .75;
+    color: white;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    background: url('../../assets/icon-arrow-left-active.svg');
+    color: transparent;
+  }
+}
+
+.slick-next {
+    font-size: 0px;
+    line-height: 0;
+    position: absolute;
+    top: 50%;
+    display: block;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    cursor: pointer;
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent;
+    z-index: 100;
+
+  &:before {
+    font-family: 'slick';
+    font-size: 40px;
+    line-height: 1;
+    opacity: .75;
+    color: white;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    background: url('../../assets/icon-arrow-right-active.svg');
+    color: transparent;
+  }
+}
+
+.slick-dots {
+    bottom: -30px;
+
+    li {
+      width: 12px;
+      height: 12px;
+
+      button {
+          &:before {
+              background: url('../../assets/icon-slideshow-inactive.svg');
+              color: transparent;
+              width: 12px;
+              height: 12px;
+          }
+      }
+
+      &.slick-active {
+          button {
+              &:before {
+                  background: url('../../assets/icon-slideshow-active.svg');
+                  color: transparent;
+              }
+          }
+      }
+  }
+}
+
+
+/** Modal **/
+
+
+.overhead-popup {
+    bottom: -20px !important;
 }

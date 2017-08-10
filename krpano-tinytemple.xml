@@ -1,0 +1,36 @@
+<krpano>
+
+	<events onxmlcomplete="startup();" />
+	
+	<action name="startup">
+        <!-- SET HEADING -->
+        set(heading, 0);
+        
+        
+		<!-- switch(plugin[gyro].enabled -->
+    </action>
+    
+	<image type="CUBE" multires="true" tilesize="512" prealign="0|180|0">
+		<level tiledimagewidth="5730" tiledimageheight="5730">
+			<cube url="20141124pano444434_CC__85mm_r8_Pagodas_18_000x.tiles/mres_%s/l4/%v/l4_%s_%v_%h.jpg" />
+		</level>
+		<level tiledimagewidth="2866" tiledimageheight="2866">
+			<cube url="20141124pano444434_CC__85mm_r8_Pagodas_18_000x.tiles/mres_%s/l3/%v/l3_%s_%v_%h.jpg" />
+		</level>
+		<level tiledimagewidth="1434" tiledimageheight="1434">
+			<cube url="20141124pano444434_CC__85mm_r8_Pagodas_18_000x.tiles/mres_%s/l2/%v/l2_%s_%v_%h.jpg" />
+		</level>
+		<level tiledimagewidth="718" tiledimageheight="718">
+			<cube url="20141124pano444434_CC__85mm_r8_Pagodas_18_000x.tiles/mres_%s/l1/%v/l1_%s_%v_%h.jpg" />
+		</level>
+		<mobile>
+			<cube url="20141124pano444434_CC__85mm_r8_Pagodas_18_000x.tiles/mobile_%s.jpg" />
+		</mobile>
+	</image>
+	
+
+	<!-- view/fov settings -->
+	<view hlookat="223" vlookat="-22" maxpixelzoom="1.2" fovmax="16" limitview="auto" />
+
+
+</krpano>

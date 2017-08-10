@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>PMA Project</title>
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="x-ua-compatible" content="IE=edge" />
+
+    <link rel="stylesheet" type="text/css" href="./resources/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="./resources/slick/slick-theme.css">
+
+    <link rel="stylesheet" type="text/css" href="./resources/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="./animate.css">
+
+    <script type="text/javascript" src="./resources/jquery.min.js"></script>
+    <script type="text/javascript" src="./animate.js"></script>
+
+    <script src="pano_lap.js"></script>
+    <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./dist/css/main.css" rel="stylesheet">
+
+
+
+<style type="text/css">
+body {
+    margin:0;
+    padding:0;
+}
+
+.video-controls {
+    top: 691px !important;
+}
+
+@font-face {
+  font-family: AvenirProLight;
+  src: url("./assets/AvenirPro/AvenirLTPro-Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: AvenirProMedium;
+  src: url("./assets/AvenirPro/AvenirLTPro-Medium.otf") format("opentype");
+}
+
+@font-face {
+  font-family: AvenirProHeavy;
+  src: url("./assets/AvenirPro/AvenirLTPro-Heavy.otf") format("opentype");
+}
+
+@font-face {
+  font-family: AvenirProBlack;
+  src: url("./assets/AvenirPro/AvenirLTPro-Black.otf") format("opentype");
+}
+
+.slick-prev:before {
+    background: url('./assets/icon-arrow-left-active.svg');
+    color: transparent;
+    font-size: 40px;
+}
+
+.slick-next:before {
+    background: url('./assets/icon-arrow-right-active.svg');
+    color: transparent;
+    font-size: 40px;
+}
+
+.slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus {
+    font-size: 40px;
+}
+
+.slick-next {
+    right:-2%;
+}
+
+.slick-dots {
+    bottom: -30px;
+}
+
+.slick-dots li.slick-active button:before {
+    background: url('./assets/icon-slideshow-active.svg');
+    color: transparent;
+}
+
+.slick-dots li {
+    width: 12px;
+    height: 12px;
+}
+
+.slick-dots li button:before {
+    background: url('./assets/icon-slideshow-inactive.svg');
+    color: transparent;
+    width: 12px;
+    height: 12px;
+}
+
+.slick-prev, .slick-next {
+    top:46%;
+    z-index: 5;
+}
+
+.wrapper {
+    width: 1024px;
+    height: 768px;
+    position: relative;
+    overflow: hidden;
+}
+
+#modal-background {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 1024px;
+    height: 768px;
+    background-color: black;
+    opacity: .50;
+    -webkit-opacity: .5;
+    -moz-opacity: .5;
+    filter: alpha(opacity=50);
+    z-index: 1000;
+}
+
+#modal-content {
+    position: absolute;
+    width: 490px;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: 0 auto;
+    height: 220px;
+    z-index: 1000;
+    display: none;
+    top: 50%;
+    transform: translateY(-50%);
+    color:#454545;
+    text-align: center;
+}
+
+#modal-background.active, #modal-content.active {
+    display: block;
+}
+
+
+.overhead-popup {
+    bottom: -20px !important;
+}
+</style>
+
+<script type="text/javascript">
+    var HotspotData;
+</script>
+
+</head>
+<body>
+    <div class="wrapper">
+
+        
+
+        <div id="modal-background"></div>
+        <div id="modal-content">
+           <img src="./assets/need-more-time.jpg" width="100%">
+        </div>
+
+        <div class="start-over" style="opacity:0;">
+            <div class="start-over-btn icon">
+                <img src="./assets/icon-start-over.svg" height="48">
+            </div>
+        </div>
+
+        
+
+        <div class="pano-controls" style="opacity:0; display:none;">
+            <div class="refocus-icon icon">
+                <img src="./assets/icon-home.svg" width="48">
+            </div>
+
+            <div class="about-icon" style="opacity:.4;">
+                <img src="./assets/icon-about.svg" width="48">
+            </div>
+        </div>
+
+        <div class="hotspot-map"  style="opacity:0;">
+            <div class="hotspot">
+                
+            </div>
+        </div>
+
+        <div class="screen splash-screen" style="z-index:3;">
+            <div class="fadein">
+                <img id="f3" src="./resources/temple-img_sm-01.jpg">
+                <img id="f2" src="./resources/temple-img_sm-02.jpg">
+                <img id="f1" src="./resources/temple-img_sm-01.jpg">
+            </div>
+
+            <div class="hero-text">
+                <h1>Zhihua Temple <br /> Ceiling</h1>
+            </div>
+
+            <div class="bottom-bar">
+                <div class="left">
+                    <h3>Beijing, China | Ming Dynasty, 1444</h3>
+                </div>
+
+                <div class="right">
+                    <p>Touch anywhere to explore</p>
+
+                    <div class="start-button">
+                        <img src="./assets/icon-start.svg" width="40">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="screen video-screen" style="z-index:2; background:black;">
+            <div class="video-container">
+                <video id="video-player" width="1024" height="768">
+                      <source src="./assets/PMA-ZhihuaTemple.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="music-credit">
+                <p>
+                    Music from the Hall of Great Wisdom in Beijing, the ceiling's original home.
+                </p>
+            </div>
+
+            <div class="video-controls" style="opacity:1;">
+                <ul class="video-ul">
+                    <li>
+                        <div class="sound-icon">
+                            <img src="./assets/icon-unmute.svg" class="on" width="48">
+                            <img src="./assets/icon-mute.svg" class="off" width="48">
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="skip-icon">
+                            <img src="./assets/icon-skip-video.svg" class="skip"height="48">
+                        </div>
+                    </li>
+                </ul>
+                
+            </div>
+        </div>
+
+        <div class="screen home-screen" style="z-index:1;">
+
+            <div class="home-info-modal">
+                <div class="top-info">
+                    <h2>This carved ceiling comes from the Hall of Great Wisdom in Beijing.</h2>
+
+                    <p>
+                         Rich in symbolism, it is both a Buddhist vision of heaven and a bold statement of the emperor’s power.
+                        <br />
+                        Explore the ceiling’s details to uncover its meaning.
+                    </p>
+                </div>
+
+                <div class="bottom-info">
+                    <div class="image">
+                        <img src="./assets/pma-gif-instructions.gif" />
+                    </div>
+                    <p class="lead">
+                        Lift the device overhead to view the ceiling in details.
+                    </p>
+
+                    <div class="button-div">
+
+                        <a javasript:void(0); class="btn-skip-overhead">
+                            <img src="./assets/icon-skip-overhead.svg" height="48">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="popup-modal heavenly-modal" style="display:none;">
+                <div class="top-area">
+                    <h3 class="popup-title">Heavenly Beings Holding the Eight Auspicious Symbols of Buddhism</h3>
+
+                    <p class="popup-body">
+                        This ceiling is full of heavenly beings, each holding one of Eight Auspicious symbols of Buddhism that represent good fortune.
+                    </p>
+                </div>
+
+                <div class="bottom-area">
+                    <div class="slider">
+                        <div class="single-item">
+                            <div data-vLocation="-0.17" data-hLocation="-0.025" data-desc="Test 1">
+                                <img src="./assets/thumbnail-heavenlybeing-banner.jpg" width="100%">
+                            </div>
+
+                            <div data-vLocation="-0.97" data-hLocation="-0.065" data-desc="Test 2">
+                                <img src="./assets/thumbnail-heavenlybeing-knot.jpg" width="100%">
+                            </div>
+
+                            <div data-vLocation="0.37" data-hLocation="-0.075" data-desc="Test 3">
+                                <img src="./assets/thumbnail-heavenlybeing-fish.jpg" width="100%">
+                            </div>
+
+                            <div data-vLocation="0.57" data-hLocation="-0.095" data-desc="Test 4">
+                                <img src="./assets/thumbnail-heavenlybeing-lotus.jpg" width="100%">
+                            </div>
+
+                            <div data-vLocation="0.57" data-hLocation="-0.095" data-desc="Test 5">
+                                <img src="./assets/thumbnail-heavenlybeing-shell.jpg" width="100%">
+                            </div>
+
+                            <div data-vLocation="0.57" data-hLocation="-0.095" data-desc="Test 6">
+                                <img src="./assets/thumbnail-heavenlybeing-umbrella.jpg" width="100%">
+                            </div>
+
+                            <div data-vLocation="0.57" data-hLocation="-0.095" data-desc="Test 7">
+                                <img src="./assets/thumbnail-heavenlybeing-urn.jpg" width="100%">
+                            </div>
+
+                            <div data-vLocation="0.57" data-hLocation="-0.095" data-desc="Test 8">
+                                <img src="./assets/thumbnail-heavenlybeing-wheel.jpg" width="100%">
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <p class="slider-description">
+                        Title 1
+                    </p>
+                </div>
+
+                <div class="close-icon" data-lasthotspot="" >
+                    <img src="./assets/icon-close.svg" width="48">
+                </div>
+            </div>
+
+            <div class="popup-modal lotus-modal" style="display:none;">
+                <div class="top-area">
+                    <h3>Lotus</h3>
+
+                    <p>
+                        The lotus is one of eight symbols of the Buddism. Seeking the sun's light through muddy waters, the lotus serves as a metaphor for the soul's pursuit of enlightenment.
+                    </p>
+                </div>
+
+                <div class="bottom-area">
+                    <div class="slider">
+                        <img src="./assets/thumbnail-lotus.jpg" width="100%">
+                    </div>
+                </div>
+
+                <div class="close-icon" data-lasthotspot="" >
+                    <img src="./assets/icon-close.svg" width="48">
+                </div>
+            </div>
+
+            <div id="pano" style="width:100%;height:100%;">
+                <noscript><table style="width:100%;height:100%;"><tr style="vertical-align:middle;"><td><div style="text-align:center;">ERROR:<br/><br/>Javascript not activated<br/><br/></div></td></tr></table></noscript>
+                <script>
+                    embedpano({xml:"pano_lap.xml", target:"pano", html5:"only", passQueryParameters:true});
+                </script>
+            </div>
+        </div>
+
+        <div class="screen pano-screen" style="z-index:0;">
+            <div id="ceiling-pano" style="width:100%;height:100%;">
+                <noscript><table style="width:100%;height:100%;"><tr style="vertical-align:middle;"><td><div style="text-align:center;">ERROR:<br/><br/>Javascript not activated<br/><br/></div></td></tr></table></noscript>
+                <script>
+                    embedpano({xml:"krpano.xml", target:"ceiling-pano", html5:"only", passQueryParameters:true});
+                    
+                    function getVertical() {
+                        var krpano = document.getElementById("krpanoSWFObject");
+                        return krpano.get("view.vlookat")
+                        //return "abc";
+                    }
+                
+                    function getHorizontal() {
+                        var krpano = document.getElementById("krpanoSWFObject");
+                        return krpano.get("view.hlookat")
+                        //return "abc";
+                    }
+                </script>
+            </div>
+
+            <div class="overhead-popup" style="opacity:0;">
+                <p>
+                    To explore the ceiling, hold the device above your head.
+                </p>
+            </div>
+            
+        </div>
+
+        <div id="pano" class="screen pano-screen" style="z-index:-1;">
+
+        </div>
+
+    </div>
+
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        
+        function getKrpanoObject() {
+            var krpano = document.getElementById("krpanoSWFObject");
+            return krpano;
+        }
+
+        function krpanoZoomTo(val) {
+            var krpano = getKrpanoObject();
+        krpano.call("zoomto(" + val + ", tween('easeInOutQuad', 0.5));");
+        }
+
+        function krpanoMoveTo(x, y) {
+            var krpano = getKrpanoObject();
+            krpano.call("moveto(" + x + ", "+ y + ", tween('easeInOutQuad', 0.5));");
+        }
+
+        function disablePano() {
+            var krpano = getKrpanoObject();
+                krpano.call("set(control.usercontrol, 'off');");
+        }
+
+        function enablePano() {
+            var krpano = getKrpanoObject();
+                krpano.call("set(control.usercontrol, 'all');");
+        }
+
+        function LotusHotSpot(name) {
+            if($('.popup-modal').is(':visible')) {
+                $('.close-icon').click();
+            }  
+            krpanoZoomTo(.1); 
+            krpanoMoveTo(-0.07, -0.055);
+            //disablePano();
+            $('.lotus-modal').show();
+
+
+            var krpano = getKrpanoObject();
+            var query = "hotspot['"+name+"']"; // i.e. "hotspot['spot0']"
+            var hotspot = krpano.get(query); 
+            hotspot.alpha = 0;
+
+            console.log(hotspot);
+
+            $('.close-icon').data('lasthotspot', name);
+        }
+
+        function OpenHotSpot(id) {
+            if($('.popup-modal').is(':visible')) {
+                $('.close-icon').click();
+            } 
+
+
+            var hotspot = GetHotSpot(id);
+
+            console.log(hotspot);
+
+            var title = hotspot.title;
+            var body = hotspot.body;
+            var desc = hotspot.body;
+            var sliderHTML = getSlider(hotspot.field_related_hotspots);
+
+            $('.popup-title').text(title);
+            $('.popup-body').html(body);
+            $('.slider').html(sliderHTML);
+            //('.slider-description').html(body);
+
+            $('.heavenly-modal').show();
+
+            
+            if(hotspot.field_related_hotspots.length > 1) {
+                $('.single-item').slick({
+                    dots: true,
+                    arrows: true
+                });
+            }
+
+            var name = 'a' + id;
+            var krpano = document.getElementById("krpanoSWFObject");
+            krpano.call("looktohotspot('"+ name +"', 0, tween('easeInOutQuad', 0.5));");
+
+
+            var query = "hotspot['"+name+"']"; // i.e. "hotspot['spot0']"
+            var hotspot = krpano.get(query); 
+            hotspot.alpha = 0;
+
+            $('.close-icon').data('lasthotspot', 'a' + id);
+        }
+
+        function GetHotSpot(id){
+            var hotspot;
+            for (var i = 0; i < HotspotData.length; i++) {
+                if ( HotspotData[i].nid == id ) {
+                    hotspot = HotspotData[i]
+                }
+            };
+
+            return hotspot;
+        }
+
+        function HeavenlyHotSpot(name) {
+            if($('.popup-modal').is(':visible')) {
+                $('.close-icon').click();
+            } 
+
+            krpanoZoomTo(.1); 
+             ath=""
+            krpanoMoveTo(-.08, .05);
+            //disablePano();
+            $('.heavenly-modal').show();
+
+            $('.single-item').slick({
+                dots: true,
+                arrows: true
+            });
+
+
+            var krpano = getKrpanoObject();
+            var query = "hotspot['"+name+"']"; // i.e. "hotspot['spot0']"
+            var hotspot = krpano.get(query); 
+            hotspot.alpha = 0;
+
+            console.log(hotspot);
+
+            $('.close-icon').data('lasthotspot', name);
+        }
+
+        function hideHotSpots() {
+            var krpano = getKrpanoObject();
+            var hotspot_count = krpano.get('hotspot.count');
+
+            for(i = 0; i < hotspot_count; i++){
+                krpano.set('hotspot[' + i + '].alpha', 0); 
+            }
+        }
+
+        function showHotSpots() {
+            var krpano = getKrpanoObject();
+            var hotspot_count = krpano.get('hotspot.count');
+
+            for(i = 0; i < hotspot_count; i++){
+                krpano.set('hotspot[' + i + '].alpha', 1); 
+            }
+        }
+
+        function getHotSpot(name) {
+            var krpano = getKrpanoObject();
+            var hotspot_count = krpano.get('hotspot.count');
+
+            var spotname = "spot0";
+            var query = "hotspot['"+name+"']"; 
+            var hotspot = krpano.get(query);
+
+            return hotspot;
+        }
+        
+    </script>
+
+    <script src="./js/main.js"></script>
+
+    <script type="text/javascript" src="./resources/slick/slick.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+
+            $('.slick-slider').on('afterChange', function(event, slick, currentSlide, nextSlide){
+
+                var currentItem = $(slick.$slides[currentSlide]);  
+                currentItem[0].dataset.hlocation
+
+                var vLoc = currentItem[0].dataset.vlocation;
+                var hLoc = currentItem[0].dataset.hlocation;
+                krpanoMoveTo(vLoc, hLoc);
+
+                $('.slider-description').text(currentItem[0].dataset.desc);
+            });
+
+
+            $.getJSON('./testjson.php', function(data) {
+                HotspotData = data;
+            });
+
+        });
+
+    </script>
+
+    <script type="text/javascript">
+        function getSlider(details) {
+            var html = '<div class="single-item">'
+            for (var i = 0; i < details.length; i++) {
+                html += '<div data-vLocation="'+ details[i].field_vertical_position +'" data-hLocation="'+ details[i].field_horizontal_position +'" data-desc="'+details[i].field_hotspot_body+'"> <img src="http://dev.interactivemechanics.com'+details[i].field_hotspot_detail_image.trim()+'" width="100%"> </div>';
+            };
+
+            /*for (var i = 0; i < details.length; i++) {
+                html += '<div data-vLocation="'+ details[i].field_vertical_position +'" data-hLocation="'+ details[i].field_horizontal_position +'" data-desc="'+details[i].field_hotspot_body+'">
+                <img src="'+details[i].field_hotspot_detail_image+'" width="100%">
+            </div>';
+            };*/
+
+            html += "</div>"
+
+            return html;
+        }
+    </script>
+</body>
+</html>

@@ -16,151 +16,169 @@
 
     <script type="text/javascript" src="./resources/jquery.min.js"></script>
     <script type="text/javascript" src="./animate.js"></script>
+    <script type="text/javascript" src="./resources/cycle.js"></script>
 
     <script src="pano_lap.js"></script>
-    <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="pano_ceiling.js"></script>
+    <script src="pano_temple.js"></script>
     <link href="./dist/css/main.css" rel="stylesheet">
 
 
 
 <style type="text/css">
-body {
-    margin:0;
-    padding:0;
-}
+    .about-slider .slick-slide  {
+        text-align: center;
+    }
 
-.video-controls {
-    top: 691px !important;
-}
+    .about-slider .slick-slide img{
+        margin: auto;
+    }
 
-@font-face {
-  font-family: AvenirProLight;
-  src: url("./assets/AvenirPro/AvenirLTPro-Light.otf") format("opentype");
-}
+    @font-face {
+      font-family: AvenirProLight;
+      src: url("./assets/AvenirPro/AvenirLTPro-Light.otf") format("opentype");
+    }
 
-@font-face {
-  font-family: AvenirProMedium;
-  src: url("./assets/AvenirPro/AvenirLTPro-Medium.otf") format("opentype");
-}
+    @font-face {
+      font-family: AvenirProMedium;
+      src: url("./assets/AvenirPro/AvenirLTPro-Medium.otf") format("opentype");
+    }
 
-@font-face {
-  font-family: AvenirProHeavy;
-  src: url("./assets/AvenirPro/AvenirLTPro-Heavy.otf") format("opentype");
-}
+    @font-face {
+      font-family: AvenirProHeavy;
+      src: url("./assets/AvenirPro/AvenirLTPro-Heavy.otf") format("opentype");
+    }
 
-@font-face {
-  font-family: AvenirProBlack;
-  src: url("./assets/AvenirPro/AvenirLTPro-Black.otf") format("opentype");
-}
-
-.slick-prev:before {
-    background: url('./assets/icon-arrow-left-active.svg');
-    color: transparent;
-    font-size: 40px;
-}
-
-.slick-next:before {
-    background: url('./assets/icon-arrow-right-active.svg');
-    color: transparent;
-    font-size: 40px;
-}
-
-.slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus {
-    font-size: 40px;
-}
-
-.slick-next {
-    right:-2%;
-}
-
-.slick-dots {
-    bottom: -30px;
-}
-
-.slick-dots li.slick-active button:before {
-    background: url('./assets/icon-slideshow-active.svg');
-    color: transparent;
-}
-
-.slick-dots li {
-    width: 12px;
-    height: 12px;
-}
-
-.slick-dots li button:before {
-    background: url('./assets/icon-slideshow-inactive.svg');
-    color: transparent;
-    width: 12px;
-    height: 12px;
-}
-
-.slick-prev, .slick-next {
-    top:46%;
-    z-index: 5;
-}
-
-.wrapper {
-    width: 1024px;
-    height: 768px;
-    position: relative;
-    overflow: hidden;
-}
-
-#modal-background {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 1024px;
-    height: 768px;
-    background-color: black;
-    opacity: .50;
-    -webkit-opacity: .5;
-    -moz-opacity: .5;
-    filter: alpha(opacity=50);
-    z-index: 1000;
-}
-
-#modal-content {
-    position: absolute;
-    width: 490px;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: 0 auto;
-    height: 220px;
-    z-index: 1000;
-    display: none;
-    top: 50%;
-    transform: translateY(-50%);
-    color:#454545;
-    text-align: center;
-}
-
-#modal-background.active, #modal-content.active {
-    display: block;
-}
+    @font-face {
+      font-family: AvenirProBlack;
+      src: url("./assets/AvenirPro/AvenirLTPro-Black.otf") format("opentype");
+    }
 
 
-.overhead-popup {
-    bottom: -20px !important;
-}
+    #modal-background {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 1024px;
+        height: 768px;
+        background-color: black;
+        opacity: .50;
+        -webkit-opacity: .5;
+        -moz-opacity: .5;
+        filter: alpha(opacity=50);
+        z-index: 1000;
+    }
+
+    #modal-content {
+        position: absolute;
+        width: 490px;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: 0 auto;
+        height: 220px;
+        z-index: 1000;
+        display: none;
+        top: 50%;
+        transform: translateY(-50%);
+        color:#454545;
+        text-align: center;
+    }
+
+    #out-of-range-modal-content {
+        position: absolute;
+        width: 490px;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: 0 auto;
+        height: 220px;
+        z-index: 1000;
+        display: none;
+        top: 50%;
+        transform: translateY(-50%);
+        color:#454545;
+        text-align: center;
+    }
+
+    #battery-low-modal-content {
+        position: absolute;
+        width: 490px;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: 0 auto;
+        height: 220px;
+        z-index: 1000;
+        display: none;
+        top: 50%;
+        transform: translateY(-50%);
+        color:#454545;
+        text-align: center;
+    }
+
+    #modal-background.active, #modal-content.active, 
+    #battery-low-modal-content.active, #out-of-range-modal-content.active  {
+        display: block;
+    }
 </style>
 
+<!-- Defining Variables -->
 <script type="text/javascript">
     var HotspotData;
+    var AboutData;
+
+    var LapViewStopWatch;// = new Stopwatch(); //myWatch.start();
+    var CeilingViewStopWatch;// = new Stopwatch();
 </script>
 
 </head>
 <body>
     <div class="wrapper">
 
+        <div class="about-modal" style="display:none;">
+            <div class="top-area">
+                <h3 class="about-modal-title">About the Zhihua Temple</h3>
+
+                <p class="about-modal-body">
+
+                </p>
+            </div>
+
+            <div class="bottom-area">
+                <div class="about-slider">
+                    <div class="single-item">
+                        
+                    </div>
+                    
+                </div>
+
+                <p class="about-slider-description">
+                    
+                </p>
+            </div>
+
+            <div class="close-icon" data-lasthotspot="" >
+                <img src="./assets/icon-close.svg" width="48">
+            </div>
+        </div>
         
 
         <div id="modal-background"></div>
         <div id="modal-content">
            <img src="./assets/need-more-time.jpg" width="100%">
+        </div>
+
+        <div id="battery-low-modal-content">
+           <img src="./assets/warning-low-battery@2x-100.jpg" width="100%">
+        </div>
+
+        <div id="out-of-range-modal-content">
+           <img src="./assets/warning-out-of-range@2x-100.jpg" width="100%">
         </div>
 
         <div class="start-over" style="opacity:0;">
@@ -170,13 +188,12 @@ body {
         </div>
 
         
-
         <div class="pano-controls" style="opacity:0; display:none;">
             <div class="refocus-icon icon">
                 <img src="./assets/icon-home.svg" width="48">
             </div>
 
-            <div class="about-icon" style="opacity:.4;">
+            <div class="about-icon">
                 <img src="./assets/icon-about.svg" width="48">
             </div>
         </div>
@@ -191,8 +208,14 @@ body {
             <div class="fadein">
                 <img id="f3" src="./resources/temple-img_sm-01.jpg">
                 <img id="f2" src="./resources/temple-img_sm-02.jpg">
-                <img id="f1" src="./resources/temple-img_sm-01.jpg">
+                <img id="f1" src="./resources/temple-img_sm-03.jpg">
             </div>
+
+            <script type="text/javascript">
+                $('.fadein').cycle({
+                    speed:  1000
+                });
+            </script>
 
             <div class="hero-text">
                 <h1>Zhihua Temple <br /> Ceiling</h1>
@@ -214,16 +237,16 @@ body {
             </div>
         </div>
 
-        <div class="screen video-screen" style="z-index:2; background:black;">
+        
+        <div class="screen video-screen" style="z-index:2; background-color:#000;">
             <div class="video-container">
-                <video id="video-player" width="1024" height="768">
-                      <source src="./assets/PMA-ZhihuaTemple.mp4" type="video/mp4">
+                <video  src="./assets/PMA-ZhihuaTemple_ipad.mp4" id="video-player" width="1024" height="768" playsinline>
                 </video>
             </div>
 
             <div class="music-credit">
                 <p>
-                    Music from the Hall of Great Wisdom in Beijing, the ceiling's original home.
+                    Buddhist ritual music from the Zhihua temple. <br /> It has been performed at the temple since its founding in the 1400s.
                 </p>
             </div>
 
@@ -250,25 +273,15 @@ body {
 
             <div class="home-info-modal">
                 <div class="top-info">
-                    <h2>This carved ceiling comes from the Hall of Great Wisdom in Beijing.</h2>
-
-                    <p>
-                         Rich in symbolism, it is both a Buddhist vision of heaven and a bold statement of the emperor’s power.
-                        <br />
-                        Explore the ceiling’s details to uncover its meaning.
-                    </p>
+                    <h2>Lift the device overhead to view the ceiling in details.</h2>
                 </div>
 
                 <div class="bottom-info">
                     <div class="image">
-                        <img src="./assets/pma-gif-instructions.gif" />
+                        <img src="./assets/full-body-gif.gif" />
                     </div>
-                    <p class="lead">
-                        Lift the device overhead to view the ceiling in details.
-                    </p>
 
                     <div class="button-div">
-
                         <a javasript:void(0); class="btn-skip-overhead">
                             <img src="./assets/icon-skip-overhead.svg" height="48">
                         </a>
@@ -276,7 +289,7 @@ body {
                 </div>
             </div>
 
-            <div class="popup-modal heavenly-modal" style="display:none;">
+            <div class="popup-modal lap-view-modal" style="display:none;">
                 <div class="top-area">
                     <h3 class="popup-title">Heavenly Beings Holding the Eight Auspicious Symbols of Buddhism</h3>
 
@@ -288,43 +301,13 @@ body {
                 <div class="bottom-area">
                     <div class="slider">
                         <div class="single-item">
-                            <div data-vLocation="-0.17" data-hLocation="-0.025" data-desc="Test 1">
-                                <img src="./assets/thumbnail-heavenlybeing-banner.jpg" width="100%">
-                            </div>
-
-                            <div data-vLocation="-0.97" data-hLocation="-0.065" data-desc="Test 2">
-                                <img src="./assets/thumbnail-heavenlybeing-knot.jpg" width="100%">
-                            </div>
-
-                            <div data-vLocation="0.37" data-hLocation="-0.075" data-desc="Test 3">
-                                <img src="./assets/thumbnail-heavenlybeing-fish.jpg" width="100%">
-                            </div>
-
-                            <div data-vLocation="0.57" data-hLocation="-0.095" data-desc="Test 4">
-                                <img src="./assets/thumbnail-heavenlybeing-lotus.jpg" width="100%">
-                            </div>
-
-                            <div data-vLocation="0.57" data-hLocation="-0.095" data-desc="Test 5">
-                                <img src="./assets/thumbnail-heavenlybeing-shell.jpg" width="100%">
-                            </div>
-
-                            <div data-vLocation="0.57" data-hLocation="-0.095" data-desc="Test 6">
-                                <img src="./assets/thumbnail-heavenlybeing-umbrella.jpg" width="100%">
-                            </div>
-
-                            <div data-vLocation="0.57" data-hLocation="-0.095" data-desc="Test 7">
-                                <img src="./assets/thumbnail-heavenlybeing-urn.jpg" width="100%">
-                            </div>
-
-                            <div data-vLocation="0.57" data-hLocation="-0.095" data-desc="Test 8">
-                                <img src="./assets/thumbnail-heavenlybeing-wheel.jpg" width="100%">
-                            </div>
+                            
                         </div>
                         
                     </div>
 
                     <p class="slider-description">
-                        Title 1
+                        
                     </p>
                 </div>
 
@@ -354,6 +337,11 @@ body {
             </div>
 
             <div id="pano" style="width:100%;height:100%;">
+
+                <div class="instructions" style="width: 1024px; height: 768px; position: absolute; top: 0; z-index: 50; left: 0; opacity:0; display:none;">
+                    <img src="./assets/instructions.png" style="position: absolute; z-index: 1000000; top:0;" width="1024" height="768">
+                </div>
+
                 <noscript><table style="width:100%;height:100%;"><tr style="vertical-align:middle;"><td><div style="text-align:center;">ERROR:<br/><br/>Javascript not activated<br/><br/></div></td></tr></table></noscript>
                 <script>
                     embedpano({xml:"pano_lap.xml", target:"pano", html5:"only", passQueryParameters:true});
@@ -364,17 +352,18 @@ body {
         <div class="screen pano-screen" style="z-index:0;">
             <div id="ceiling-pano" style="width:100%;height:100%;">
                 <noscript><table style="width:100%;height:100%;"><tr style="vertical-align:middle;"><td><div style="text-align:center;">ERROR:<br/><br/>Javascript not activated<br/><br/></div></td></tr></table></noscript>
+
                 <script>
-                    embedpano({xml:"krpano.xml", target:"ceiling-pano", html5:"only", passQueryParameters:true});
+                    embedceiling({xml:"pano.xml", target:"ceiling-pano", html5:"only", passQueryParameters:true});
                     
                     function getVertical() {
-                        var krpano = document.getElementById("krpanoSWFObject");
+                        var krpano = document.getElementById("krpanoSWFObjectCeiling");
                         return krpano.get("view.vlookat")
                         //return "abc";
                     }
                 
                     function getHorizontal() {
-                        var krpano = document.getElementById("krpanoSWFObject");
+                        var krpano = document.getElementById("krpanoSWFObjectCeiling");
                         return krpano.get("view.hlookat")
                         //return "abc";
                     }
@@ -383,7 +372,61 @@ body {
 
             <div class="overhead-popup" style="opacity:0;">
                 <p>
-                    To explore the ceiling, hold the device above your head.
+                    To learn more about the ceiling details, bring the device down to your lap.
+                </p>
+            </div>
+            
+        </div>
+
+        <div class="screen pano-screen tiny-temple-screen" style="z-index:-1;">
+
+            <div class="popup-modal lotus-modal tiny-temple-modal">
+                <div class="top-area">
+                    <h3 class="popup-title">Heavenly Beings Holding the Eight Auspicious Symbols of Buddhism</h3>
+
+                    <p class="popup-body">
+                        This ceiling is full of heavenly beings, each holding one of Eight Auspicious symbols of Buddhism that represent good fortune.
+                    </p>
+                </div>
+
+                <div class="bottom-area">
+                    <div class="slider">
+                        <img src="./assets/thumbnail-lotus.jpg" width="100%">
+                    </div>
+
+                    <p class="slider-description" style="font-size: 16px; line-height: 22px;">
+
+                    </p>
+                </div>
+
+
+
+                <div class="close-icon" data-lasthotspot="" >
+                    <img src="./assets/icon-close.svg" width="48">
+                </div>
+            </div>
+
+            <div id="temple-pano" style="width:100%;height:100%;">
+                <noscript><table style="width:100%;height:100%;"><tr style="vertical-align:middle;"><td><div style="text-align:center;">ERROR:<br/><br/>Javascript not activated<br/><br/></div></td></tr></table></noscript>
+
+                <script>
+                    embedtemple({xml:"pano-tinytemple.xml", target:"temple-pano", html5:"only", passQueryParameters:true});
+                    
+                    function getVertical() {
+                        var krpano = document.getElementById("krpanoSWFObjectTemple");
+                        return krpano.get("view.vlookat")
+                    }
+                
+                    function getHorizontal() {
+                        var krpano = document.getElementById("krpanoSWFObjectTemple");
+                        return krpano.get("view.hlookat")
+                    }
+                </script>
+            </div>
+
+            <div class="overhead-popup" style="opacity:0;">
+                <p>
+                    To learn more about the ceiling details, bring the device down to your lap.
                 </p>
             </div>
             
@@ -395,213 +438,32 @@ body {
 
     </div>
 
-    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- 3rd party tools -->
+    <script src="./js/stopwatch.js"></script>
+    <script src="./js/analytics.js"></script>
 
-    <script type="text/javascript">
-        
-        function getKrpanoObject() {
-            var krpano = document.getElementById("krpanoSWFObject");
-            return krpano;
-        }
-
-        function krpanoZoomTo(val) {
-            var krpano = getKrpanoObject();
-        krpano.call("zoomto(" + val + ", tween('easeInOutQuad', 0.5));");
-        }
-
-        function krpanoMoveTo(x, y) {
-            var krpano = getKrpanoObject();
-            krpano.call("moveto(" + x + ", "+ y + ", tween('easeInOutQuad', 0.5));");
-        }
-
-        function disablePano() {
-            var krpano = getKrpanoObject();
-                krpano.call("set(control.usercontrol, 'off');");
-        }
-
-        function enablePano() {
-            var krpano = getKrpanoObject();
-                krpano.call("set(control.usercontrol, 'all');");
-        }
-
-        function LotusHotSpot(name) {
-            if($('.popup-modal').is(':visible')) {
-                $('.close-icon').click();
-            }  
-            krpanoZoomTo(.1); 
-            krpanoMoveTo(-0.07, -0.055);
-            //disablePano();
-            $('.lotus-modal').show();
-
-
-            var krpano = getKrpanoObject();
-            var query = "hotspot['"+name+"']"; // i.e. "hotspot['spot0']"
-            var hotspot = krpano.get(query); 
-            hotspot.alpha = 0;
-
-            console.log(hotspot);
-
-            $('.close-icon').data('lasthotspot', name);
-        }
-
-        function OpenHotSpot(id) {
-            if($('.popup-modal').is(':visible')) {
-                $('.close-icon').click();
-            } 
-
-
-            var hotspot = GetHotSpot(id);
-
-            console.log(hotspot);
-
-            var title = hotspot.title;
-            var body = hotspot.body;
-            var desc = hotspot.body;
-            var sliderHTML = getSlider(hotspot.field_related_hotspots);
-
-            $('.popup-title').text(title);
-            $('.popup-body').html(body);
-            $('.slider').html(sliderHTML);
-            //('.slider-description').html(body);
-
-            $('.heavenly-modal').show();
-
-            
-            if(hotspot.field_related_hotspots.length > 1) {
-                $('.single-item').slick({
-                    dots: true,
-                    arrows: true
-                });
-            }
-
-            var name = 'a' + id;
-            var krpano = document.getElementById("krpanoSWFObject");
-            krpano.call("looktohotspot('"+ name +"', 0, tween('easeInOutQuad', 0.5));");
-
-
-            var query = "hotspot['"+name+"']"; // i.e. "hotspot['spot0']"
-            var hotspot = krpano.get(query); 
-            hotspot.alpha = 0;
-
-            $('.close-icon').data('lasthotspot', 'a' + id);
-        }
-
-        function GetHotSpot(id){
-            var hotspot;
-            for (var i = 0; i < HotspotData.length; i++) {
-                if ( HotspotData[i].nid == id ) {
-                    hotspot = HotspotData[i]
-                }
-            };
-
-            return hotspot;
-        }
-
-        function HeavenlyHotSpot(name) {
-            if($('.popup-modal').is(':visible')) {
-                $('.close-icon').click();
-            } 
-
-            krpanoZoomTo(.1); 
-             ath=""
-            krpanoMoveTo(-.08, .05);
-            //disablePano();
-            $('.heavenly-modal').show();
-
-            $('.single-item').slick({
-                dots: true,
-                arrows: true
-            });
-
-
-            var krpano = getKrpanoObject();
-            var query = "hotspot['"+name+"']"; // i.e. "hotspot['spot0']"
-            var hotspot = krpano.get(query); 
-            hotspot.alpha = 0;
-
-            console.log(hotspot);
-
-            $('.close-icon').data('lasthotspot', name);
-        }
-
-        function hideHotSpots() {
-            var krpano = getKrpanoObject();
-            var hotspot_count = krpano.get('hotspot.count');
-
-            for(i = 0; i < hotspot_count; i++){
-                krpano.set('hotspot[' + i + '].alpha', 0); 
-            }
-        }
-
-        function showHotSpots() {
-            var krpano = getKrpanoObject();
-            var hotspot_count = krpano.get('hotspot.count');
-
-            for(i = 0; i < hotspot_count; i++){
-                krpano.set('hotspot[' + i + '].alpha', 1); 
-            }
-        }
-
-        function getHotSpot(name) {
-            var krpano = getKrpanoObject();
-            var hotspot_count = krpano.get('hotspot.count');
-
-            var spotname = "spot0";
-            var query = "hotspot['"+name+"']"; 
-            var hotspot = krpano.get(query);
-
-            return hotspot;
-        }
-        
-    </script>
-
+    <!-- Non 3rd Party Tools -->
+    <script src="./js/krpano-utils.js"></script>
+    <script src="./js/hotspot-utils.js"></script>
+    <script src="./js/utils.js"></script>
     <script src="./js/main.js"></script>
 
     <script type="text/javascript" src="./resources/slick/slick.min.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function(){
+            LapViewStopWatch = new Stopwatch(); //myWatch.start();
+            CeilingViewStopWatch = new Stopwatch();
 
+            HotspotData = JSON.parse('[{"title":"Phoenix","body":"Distinguished by its stream of tail feathers, the phoenix may symbolize the empress. When paired with the dragon, the two represent imperial power.","nid":"7","field_horizontal_position":".106","field_vert_position":"-.109","field_related_hotspots":[{"id":"24","field_hotspot_detail_image":"\/zhihua\/sites\/default\/files\/2017-06\/thumbnail-phoenix%400.5x-100_2.jpg","field_horizontal_position":"","field_vertical_position":"","field_zoom_value":"","field_hotspot_body":"","field_sort_order":0}]},{"title":"Heavenly Beings Holding the Eight Auspicious Symbols of Buddhism","body":"Heavenly beings decorate the ceiling, each presenting a Buddhist symbol of good fortune.","nid":"6","field_horizontal_position":"-.052","field_vert_position":"-.115","field_related_hotspots":[{"id":"14","field_hotspot_detail_image":"\/zhihua\/sites\/default\/files\/2017-06\/thumbnail-heavenlybeing-all%400.5x-100_2.jpg","field_horizontal_position":"","field_vertical_position":"","field_zoom_value":"","field_hotspot_body":"","field_sort_order":0},{"id":"15","field_hotspot_detail_image":"\/zhihua\/sites\/default\/files\/2017-06\/thumbnail-heavenlybeing-wheel%400.5x-100_3.jpg","field_horizontal_position":"-.121","field_vertical_position":"-.044","field_zoom_value":"","field_hotspot_body":"The Wheel of the Law represents the spread of Buddhism.","field_sort_order":"2"},{"id":"16","field_hotspot_detail_image":"\/zhihua\/sites\/default\/files\/2017-06\/thumbnail-heavenlybeing-shell%400.5x-100_2.jpg","field_horizontal_position":".111","field_vertical_position":"-.042","field_zoom_value":"","field_hotspot_body":"The conch shell reflects the far-reaching sound of Buddha\u2019s teachings.","field_sort_order":"7"},{"id":"17","field_hotspot_detail_image":"\/zhihua\/sites\/default\/files\/2017-06\/thumbnail-heavenlybeing-umbrella%400.5x-100_2.jpg","field_horizontal_position":"-.119","field_vertical_position":".052","field_zoom_value":"","field_hotspot_body":"The umbrella symbolizes protection from suffering.","field_sort_order":"3"},{"id":"18","field_hotspot_detail_image":"\/zhihua\/sites\/default\/files\/2017-06\/thumbnail-heavenlybeing-urn%400.5x-100_3.jpg","field_horizontal_position":"-.050","field_vertical_position":".116","field_zoom_value":"","field_hotspot_body":"The vase represents the endless rain of benefits of this world.","field_sort_order":"4"},{"id":"19","field_hotspot_detail_image":"\/zhihua\/sites\/default\/files\/2017-06\/thumbnail-heavenlybeing-lotus%400.5x-100_2.jpg","field_horizontal_position":".111","field_vertical_position":".046","field_zoom_value":"","field_hotspot_body":"The lotus is a symbol of purity and good deeds.","field_sort_order":"6"},{"id":"20","field_hotspot_detail_image":"\/zhihua\/sites\/default\/files\/2017-06\/thumbnail-heavenlybeing-fish%400.5x-100_2.jpg","field_horizontal_position":".046","field_vertical_position":"-.114","field_zoom_value":"","field_hotspot_body":"The paired fish stands for the freedom offered by enlightenment.","field_sort_order":"8"},{"id":"21","field_hotspot_detail_image":"\/zhihua\/sites\/default\/files\/2017-06\/thumbnail-heavenlybeing-banner%400.5x-100_3.jpg","field_horizontal_position":".046","field_vertical_position":".116","field_zoom_value":"","field_hotspot_body":"The victory banner highlights Buddhism\u2019s triumph over destructive forces.","field_sort_order":"5"},{"id":"22","field_hotspot_detail_image":"\/zhihua\/sites\/default\/files\/2017-06\/thumbnail-heavenlybeing-knot%400.5x-100_2.jpg","field_horizontal_position":"-.051","field_vertical_position":"-.115","field_zoom_value":"","field_hotspot_body":"The endless knot shows the continuous union between wisdom and compassion.","field_sort_order":"1"}]},{"title":"Lotus Flower","body":"The lotus is one of eight symbols of Buddhism. Seeking sunlight through muddy waters, the lotus serves as a metaphor for the soul\u2019s enlightened transformation.","nid":"5","field_horizontal_position":".106","field_vert_position":".001","field_related_hotspots":[{"id":"13","field_hotspot_detail_image":"\/zhihua\/sites\/default\/files\/2017-06\/thumbnail-lotus%400.5x-100_1.jpg","field_horizontal_position":"","field_vertical_position":"","field_zoom_value":"","field_hotspot_body":"","field_sort_order":0}]},{"title":"Heavenly Pavilions","body":"28 pavilions occupy this heavenly space. Each resembles a building commissioned by the imperial family.","nid":"4","field_horizontal_position":".002","field_vert_position":"0.165","field_related_hotspots":[{"id":"8","field_hotspot_detail_image":"\/zhihua\/sites\/default\/files\/2017-07\/thumbnail-temple%400.5x-100_0.jpg","field_horizontal_position":"-63.966","field_vertical_position":"-8.766","field_zoom_value":"50","field_hotspot_body":"","field_sort_order":0},{"id":"9","field_hotspot_detail_image":"\/zhihua\/sites\/default\/files\/2017-07\/thumbnail-temple-buddhas%400.5x-100_0.jpg","field_horizontal_position":"-63.813","field_vertical_position":"-7.221","field_zoom_value":".1","field_hotspot_body":"Crowned Buddhas: Lacquered and gilt Buddhas are housed in the temple pavilions. Their jewelry, crowns, and robes are typical of Chinese Buddhist statuary made in the early Ming dynasty (1368\u20131644).","field_sort_order":0},{"id":"10","field_hotspot_detail_image":"\/zhihua\/sites\/default\/files\/2017-07\/thumbnail-temple-protectivefigures%20%400.5x-100_0.jpg","field_horizontal_position":"-58.259","field_vertical_position":"-11.516","field_zoom_value":".1","field_hotspot_body":"\u00a0Roof-Ridge Animals: As with actual Chinese imperial buildings, animals and mythical creatures protect the miniature pavilions. The more important the building, the more protective figures.","field_sort_order":0},{"id":"11","field_hotspot_detail_image":"\/zhihua\/sites\/default\/files\/2017-07\/thumbnail-temple-dragons%400.5x-100_0.jpg","field_horizontal_position":"-67.901","field_vertical_position":"-16.339","field_zoom_value":".1","field_hotspot_body":"Other Architectural Ornamentation:\u00a0Dragons and dragon-like creatures are associated with rain in Chinese culture. They often decorate the roofs of wooden imperial buildings to protect them from fire.","field_sort_order":0}]},{"title":"Clouds","body":"The ceiling represents a heavenly space. As a result, all of its decorations are set against a backdrop of swirling clouds.","nid":"3","field_horizontal_position":"-.193","field_vert_position":".058","field_related_hotspots":[{"id":"6","field_hotspot_detail_image":"\/zhihua\/sites\/default\/files\/2017-06\/thumbnail-clouds%400.5x-100_0.jpg","field_horizontal_position":"","field_vertical_position":"","field_zoom_value":"","field_hotspot_body":"","field_sort_order":0}]},{"title":"Surrounding Dragons","body":"With 8 smaller dragons encircling a central dragon, this ceiling houses 9 dragons total. A powerful number in Chinese cosmology, 9 represents masculine energy and is fitting for an imperial setting.","nid":"2","field_horizontal_position":".059","field_vert_position":"0","field_related_hotspots":[{"id":"4","field_hotspot_detail_image":"\/zhihua\/sites\/default\/files\/2017-06\/thumbnail-9-dragons%400.5x-100_0.jpg","field_horizontal_position":"","field_vertical_position":"","field_zoom_value":"","field_hotspot_body":"","field_sort_order":0}]},{"title":"Central Dragon","body":"In Chinese culture, dragons symbolize many things. Here they represent imperial power. Strict laws once regulated their use. 5-clawed dragons like this one were reserved for use by the emperor and his family. 4-clawed dragons were for lower-ranking royals and officials.","nid":"1","field_horizontal_position":"-.003","field_vert_position":".003","field_related_hotspots":[{"id":"2","field_hotspot_detail_image":"\/zhihua\/sites\/default\/files\/2017-06\/thumbnail-dragon%400.5x-100_0.jpg","field_horizontal_position":"","field_vertical_position":"","field_zoom_value":"","field_hotspot_body":"","field_sort_order":0}]}]');
 
-            $('.slick-slider').on('afterChange', function(event, slick, currentSlide, nextSlide){
+            AboutData = JSON.parse('{"title":"About the Zhihua Temple","description":"Caisson ceilings like the one in this gallery were reserved for the most important buildings, such as imperial palaces and Buddhist temples. In Beijing\u2019s Forbidden City, where the emperor resided, this type of ceiling would be above a throne.","slides":[{"image":"The ceiling above us is from a Buddhist temple. It was once set above an altar to indicate a heavenly space. This photo shows a similar ceiling from the Hall of Supreme Harmony in the Imperial City.","description":"\/zhihua\/sites\/default\/files\/2017-08\/AboutTemple%20Slide%201_HallofSupremeHarmony_0.jpg"},{"image":"Three Buddhas from another hall within the Zhihua temple, where the Museum\u2019s ceiling was original installed.","description":"\/zhihua\/sites\/default\/files\/2017-08\/AboutTemple%20Slide2_BuddhaAltar_EDITED.jpg"},{"image":"Surrounding the ceiling above us are painted ceiling boards that hide the roof frames.","description":"\/zhihua\/sites\/default\/files\/2017-08\/AboutTemple%20Slide3_PMACeiling_0.jpg"},{"image":"Each board is decorated in bright pigments and gilding with a mandala, a cosmological diagram of the universe.","description":"\/zhihua\/sites\/default\/files\/2017-08\/AboutTemple%20Slide4_Square%20panel.jpg"},{"image":"The lantsa characters (Indic script used for Buddhist devotional inscriptions) represent Buddhist deities.","description":"\/zhihua\/sites\/default\/files\/2017-08\/AboutTemple%20Slide5_Square%20panel-01.jpg"},{"image":"We believe these five syllables depict the Five Buddha families that represent the Five Wisdoms. This type of decoration is appropriate for a ceiling from the Zhihua temple, also known as the Temple of Wisdom Attained.","description":"\/zhihua\/sites\/default\/files\/2017-08\/AboutTemple%20Slide6_Square%20panel-02.jpg"}]}');
 
-                var currentItem = $(slick.$slides[currentSlide]);  
-                currentItem[0].dataset.hlocation
-
-                var vLoc = currentItem[0].dataset.vlocation;
-                var hLoc = currentItem[0].dataset.hlocation;
-                krpanoMoveTo(vLoc, hLoc);
-
-                $('.slider-description').text(currentItem[0].dataset.desc);
-            });
-
-
-            $.getJSON('./testjson.php', function(data) {
-                HotspotData = data;
-            });
+            //In Utils.js
+            //setupAbout();
 
         });
-
     </script>
 
-    <script type="text/javascript">
-        function getSlider(details) {
-            var html = '<div class="single-item">'
-            for (var i = 0; i < details.length; i++) {
-                html += '<div data-vLocation="'+ details[i].field_vertical_position +'" data-hLocation="'+ details[i].field_horizontal_position +'" data-desc="'+details[i].field_hotspot_body+'"> <img src="http://dev.interactivemechanics.com'+details[i].field_hotspot_detail_image.trim()+'" width="100%"> </div>';
-            };
-
-            /*for (var i = 0; i < details.length; i++) {
-                html += '<div data-vLocation="'+ details[i].field_vertical_position +'" data-hLocation="'+ details[i].field_horizontal_position +'" data-desc="'+details[i].field_hotspot_body+'">
-                <img src="'+details[i].field_hotspot_detail_image+'" width="100%">
-            </div>';
-            };*/
-
-            html += "</div>"
-
-            return html;
-        }
-    </script>
 </body>
 </html>

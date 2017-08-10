@@ -1,76 +1,74 @@
 <krpano version="1.18" bgcolor="0x000000">
 
-	<!-- the skin and the flat pano viewing and controlling setup -->
-	<!--<include url="skin/defaultskin.xml" />
-	<include url="skin/flatpano_setup.xml" />-->
-	
 	<!-- view settings -->
-	<view hlookat="0" vlookat="0" maxpixelzoom=".43" fovmax=".43" limitview="auto" />
-	<contextmenu fullscreen="false" versioninfo="false" touch="false" />
+    <view hlookat="0" vlookat="0" maxpixelzoom="2.0" fovmax=".48" limitview="auto" />
+    
 
-	<preview url="pano_lap.tiles/preview.jpg" />
+    <preview url="pano_lap.tiles/preview.jpg" />
 
-	<!-- pano image -->
-	<image type="CYLINDER" hfov="1.00" vfov="1.000000" voffset="0.00" multires="true" tilesize="512" progressive="true" prealign="0|0|0">
-		<level tiledimagewidth="18000" tiledimageheight="18000" download="view">
-			<cylinder url="pano_lap.tiles/l7/%v/l7_%v_%h.jpg" />
-		</level>
-		<level tiledimagewidth="9000" tiledimageheight="9000" download="view">
-			<cylinder url="pano_lap.tiles/l6/%v/l6_%v_%h.jpg" />
-		</level>
-		<level tiledimagewidth="4500" tiledimageheight="4500" download="view">
-			<cylinder url="pano_lap.tiles/l5/%v/l5_%v_%h.jpg" />
-		</level>
-		<level tiledimagewidth="2250" tiledimageheight="2250" download="view">
-			<cylinder url="pano_lap.tiles/l4/%v/l4_%v_%h.jpg" />
-		</level>
-		<level tiledimagewidth="1126" tiledimageheight="1126" download="view">
-			<cylinder url="pano_lap.tiles/l3/%v/l3_%v_%h.jpg" />
-		</level>
-		<level tiledimagewidth="512" tiledimageheight="512" download="view">
-			<cylinder url="pano_lap.tiles/l2/%v/l2_%v_%h.jpg" />
-		</level>
-		<level tiledimagewidth="256" tiledimageheight="256" download="view">
-			<cylinder url="pano_lap.tiles/l1/%v/l1_%v_%h.jpg" />
-		</level>
-	</image>
+    <image type="CYLINDER" hfov="1.00" vfov="1.000000" voffset="0.00" multires="true" tilesize="512" progressive="true">
+        <level tiledimagewidth="18000" tiledimageheight="18000">
+            <cylinder url="pano_lap.tiles/l7/%v/l7_%v_%h.jpg" />
+        </level>
+        <level tiledimagewidth="9000" tiledimageheight="9000">
+            <cylinder url="pano_lap.tiles/l6/%v/l6_%v_%h.jpg" />
+        </level>
+        <level tiledimagewidth="4500" tiledimageheight="4500">
+            <cylinder url="pano_lap.tiles/l5/%v/l5_%v_%h.jpg" />
+        </level>
+        <level tiledimagewidth="2250" tiledimageheight="2250">
+            <cylinder url="pano_lap.tiles/l4/%v/l4_%v_%h.jpg" />
+        </level>
+        <level tiledimagewidth="1126" tiledimageheight="1126">
+            <cylinder url="pano_lap.tiles/l3/%v/l3_%v_%h.jpg" />
+        </level>
+        <level tiledimagewidth="512" tiledimageheight="512">
+            <cylinder url="pano_lap.tiles/l2/%v/l2_%v_%h.jpg" />
+        </level>
+        <level tiledimagewidth="256" tiledimageheight="256">
+            <cylinder url="pano_lap.tiles/l1/%v/l1_%v_%h.jpg" />
+        </level>
+    </image>
 
-	<!--<hotspot 
-        name="lotus"
-        type="image"
-        url="/prototype/assets/icon-hotspot.svg"
-        visible="true"
-        enabled="true"
-        ath="-.089"
-        atv="-0.085"
-        scale=".0015"
-        alpha="1"
-        edge="center"
-        zoom="true"
-        capture="false"
-        onclick="js(LotusHotSpot('lotus'));" />
+    <action name="hotspot_animate">
+      if(hotspot[%1].showAnimation,
+        tween(hotspot[%1].scale, 0.6, 1.0, default, tween(hotspot[%1].scale, 1.0, 1.0, default, hotspot_animate(%1) ) );
+      );
+    </action>
 
-    <hotspot 
-        name="heavenly"
-        type="image"
-        url="/prototype/assets/icon-hotspot.svg"
-        visible="true"
-        enabled="true"
-        ath="-.095"
-        atv=".05"
-        scale=".0015"
-        alpha="1"
-        edge="center"
-        zoom="true"
-        capture="false"
-        onclick="js(HeavenlyHotSpot('heavenly'));" />-->
+    <action name="do_crop_animation">
+        <!-- add attributes to the hotspot -->
+        registerattribute(xframes, calc((imagewidth / %1) BOR 0));
+        registerattribute(yframes, calc((imageheight / %2) BOR 0));
+        registerattribute(frames, calc(xframes * yframes));
+        registerattribute(frame, 0);
+
+        set(crop, '0|0|%1|%2');
+
+        setinterval(calc('crop_anim_' + name), calc(1.0 / %3),
+            if(loaded,
+                inc(frame);
+                if(frame GE frames, if(onlastframe !== null, onlastframe() ); set(frame,0); );
+                mod(xpos, frame, xframes);
+                div(ypos, frame, xframes);
+                Math.floor(ypos);
+                mul(xpos, %1);
+                mul(ypos, %2);
+                calc(crop, xpos + '|' + ypos + '|%1|%2');
+              ,
+                clearinterval(calc('crop_anim_' + name));
+              );
+          );
+    </action>
 
 
     <hotspot 
         name="a7"
         type="image"
         url="./assets/icon-hotspot.svg"
+        onloaded="hotspot_animate(get(name));" 
         visible="true"
+        showAnimation="true"
         enabled="true"
         ath=".106"
         atv="-.109"
@@ -84,7 +82,9 @@
         name="a6"
         type="image"
         url="./assets/icon-hotspot.svg"
+        onloaded="hotspot_animate(get(name));" 
         visible="true"
+        showAnimation="true"
         enabled="true"
         ath="-.052"
         atv="-.115"
@@ -98,7 +98,9 @@
         name="a5"
         type="image"
         url="./assets/icon-hotspot.svg"
+        onloaded="hotspot_animate(get(name));" 
         visible="true"
+        showAnimation="true"
         enabled="true"
         ath=".106"
         atv=".001"
@@ -112,10 +114,12 @@
         name="a4"
         type="image"
         url="./assets/icon-hotspot.svg"
+        onloaded="hotspot_animate(get(name));" 
         visible="true"
+        showAnimation="true"
         enabled="true"
-        ath="-.160"
-        atv="-.1"
+        ath=".002"
+        atv="0.155"
         scale="0.5"
         alpha="1"
         edge="center"
@@ -126,7 +130,9 @@
         name="a3"
         type="image"
         url="./assets/icon-hotspot.svg"
+        onloaded="hotspot_animate(get(name));" 
         visible="true"
+        showAnimation="true"
         enabled="true"
         ath="-.193"
         atv=".058"
@@ -140,11 +146,13 @@
         name="a2"
         type="image"
         url="./assets/icon-hotspot.svg"
+        onloaded="hotspot_animate(get(name));" 
         visible="true"
         enabled="true"
+        showAnimation="true"
         ath=".059"
         atv="0"
-        scale="0.5"
+        scale="0.6"
         alpha="1"
         edge="center"
         capture="false"
@@ -155,7 +163,9 @@
         name="a1"
         type="image"
         url="./assets/icon-hotspot.svg"
+        onloaded="hotspot_animate(get(name));" 
         visible="true"
+        showAnimation="true"
         enabled="true"
         ath="-.003"
         atv=".003"

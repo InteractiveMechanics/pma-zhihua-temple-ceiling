@@ -1,0 +1,34 @@
+<!-- the skin and the flat pano viewing and controlling setup -->
+	<!--<include url="skin/defaultskin.xml" />
+	<include url="skin/flatpano_setup.xml" />-->
+	
+	<!-- view settings -->
+	<view hlookat="0" vlookat="0" maxpixelzoom=".48" fovmax=".48" limitview="auto" />
+	<contextmenu fullscreen="false" versioninfo="false" touch="false" />
+
+	<preview url="pano_lap.tiles/preview.jpg" />
+
+	<!-- pano image -->
+	<image type="CYLINDER" hfov="1.00" vfov="1.000000" voffset="0.00" multires="true" tilesize="512" progressive="true" prealign="0|0|0">
+		<level tiledimagewidth="18000" tiledimageheight="18000" download="view">
+			<cylinder url="pano_lap.tiles/l7/%v/l7_%v_%h.jpg" />
+		</level>
+		<level tiledimagewidth="9000" tiledimageheight="9000" download="view">
+			<cylinder url="pano_lap.tiles/l6/%v/l6_%v_%h.jpg" />
+		</level>
+		<level tiledimagewidth="4500" tiledimageheight="4500" download="view">
+			<cylinder url="pano_lap.tiles/l5/%v/l5_%v_%h.jpg" />
+		</level>
+		<level tiledimagewidth="2250" tiledimageheight="2250" download="view">
+			<cylinder url="pano_lap.tiles/l4/%v/l4_%v_%h.jpg" />
+		</level>
+		<level tiledimagewidth="1126" tiledimageheight="1126" download="view">
+			<cylinder url="pano_lap.tiles/l3/%v/l3_%v_%h.jpg" />
+		</level>
+		<level tiledimagewidth="512" tiledimageheight="512" download="view">
+			<cylinder url="pano_lap.tiles/l2/%v/l2_%v_%h.jpg" />
+		</level>
+		<level tiledimagewidth="256" tiledimageheight="256" download="view">
+			<cylinder url="pano_lap.tiles/l1/%v/l1_%v_%h.jpg" />
+		</level>
+	</image>

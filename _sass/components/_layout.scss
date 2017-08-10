@@ -1,6 +1,17 @@
+body {
+    margin:0;
+    padding:0;
+
+    .wrapper {
+        width: 1024px;
+        height: 768px;
+        position: relative;
+        overflow: hidden;
+    }
+}
 
 .screen {
-	background:#333b4a;
+    background:#333b4a;
     background-repeat: no-repeat;
     background-size: cover;
     width: 1024px;
@@ -10,28 +21,21 @@
     left: 0;
 }
 
-#f1 {
-}
-#f2 {
-    -webkit-animation-delay: -4s;
-}
-#f3 {
-    -webkit-animation-delay: -2s;
-}
-
 .splash-screen {
-	
+    
     .hero-text {
         top: 35%;
         transform: translateY(-35%);
         position: absolute;
         left:8%;
+        z-index:10;
         
         h1 {
             font-size:77px;
             color:white;
             text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
             font-family:AvenirProBlack;
+            font-weight: 100 !important;
         }
     }
 
@@ -51,6 +55,7 @@
             left:0;
             bottom:0;
             height:60px;
+            z-index:10;
 
             h3 {
                 font-size:24px;
@@ -71,10 +76,11 @@
             right:0;
             bottom:0;
             height:60px;
+            z-index:10;
             
             p {
                 color:white;
-                font-size:16px;
+                font-size:18px;
                 font-weight:100;
                 color:white;
                 margin:0px;
@@ -96,10 +102,10 @@
 }
 
 .home-info-modal {
-	width: 47%;
-	z-index: 5;
-	position: absolute;
-	margin: 60px auto;
+    width: 47%;
+    z-index: 5;
+    position: absolute;
+    margin: 30px auto;
     left: 0;
     right: 0;
 
@@ -110,10 +116,9 @@
         h2 {
             color:white;
             margin:0;
-            font-size:21px;
+            font-size:25px;
             font-weight:300;
-            margin-bottom:20px;
-            line-height:30px;
+            line-height:35px;
             font-family: AvenirProMedium;
         }
 
@@ -158,55 +163,115 @@
     }
 }
 
-.home-screen {
-    .popup-modal {
-        width:300px;
+.popup-modal {
+    width:350px;
+    position:absolute;
+    right:0px;
+    top:30px;
+    z-index:10;
+
+    .top-area {
+        padding:30px 40px;
+        background:#000000;
+        line-height: 30px;
+
+        h3 {
+            color:white;
+            margin:0;
+            margin-bottom:10px;
+            font-family: AvenirProMedium;
+            font-size: 24px;
+
+        }
+
+        p {
+            color:white;
+            margin:10px 0;
+            font-family: AvenirProLight;
+            font-size:18px;
+            line-height:25px;
+        }
+    }
+
+    .bottom-area {
+        padding:30px 40px;
+        background:#292929;
+
+        p {
+            color:white;
+            margin:15px 0 0;
+            font-family: AvenirProLight;
+            font-size:18px;
+            line-height:25px;
+            padding:10px 0 0 0;
+        }
+    }
+    .close-icon {
         position:absolute;
-        right:0px;
-        top:30px;
-        z-index:10;
+        top: -24px;
+        left: -24px;
+    }
+}
 
-        .top-area {
-            padding:30px 40px;
-            background:#000000;
-            line-height: 30px;
+.about-modal {
+    width: 94%;
+    position: absolute;
+    z-index: 50;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    top: 80px;
+    background:black;
+    
+    .top-area {
+        padding: 30px 40px;
+        background: #000000;
+        line-height: 30px;
+        float: right;
+        width: 222px;
+        height: 560px;
 
-            h3 {
-                color:white;
-                margin:0;
-                margin-bottom:10px;
-                font-family: AvenirProMedium;
-                font-size: 24px;
 
-            }
 
-            p {
-                color:white;
-                margin:10px 0;
-                font-family: AvenirProLight;
-                font-size:14px;
-                line-height:22px;
-            }
+
+        h3 {
+            color:white;
+            margin:0;
+            margin-bottom:10px;
+            font-family: AvenirProMedium;
+            font-size: 24px;
+
         }
 
-        .bottom-area {
-            padding:30px 40px;
-            background:#292929;
+        p {
+            color:white;
+            margin:10px 0;
+            font-family: AvenirProLight;
+            font-size:18px;
+            line-height:25px;
+        }
+    }
 
-            p {
-                color:white;
-                margin:15px 0 0;
-                font-family: AvenirProLight;
-                font-size:14px;
-                line-height:22px;
-                padding:10px 0 0 0;
-            }
+    .bottom-area {
+        padding: 30px 40px;
+        background: #292929;
+        float: left;
+        width: 580px;
+        height: 560px;
+
+        p {
+            color:white;
+            margin:15px 0 0;
+            font-family: AvenirProLight;
+            font-size:18px;
+            line-height:25px;
+            padding:10px 0 0 0;
         }
-        .close-icon {
-            position:absolute;
-            top: -24px;
-            left: -24px;
-        }
+    }
+    .close-icon {
+        position:absolute;
+        top: -24px;
+        right: -24px;
     }
 }
 
@@ -217,7 +282,8 @@
         position: absolute;
         bottom: 8px;
         right: 20px;
-        font-size: 13pt;
+        font-size: 14pt;
+        text-align: right;
 
         p {
             color: white;
